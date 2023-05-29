@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet"
+        id="bootstrap-css">
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <style>
+        .register .nav-tabs .nav-link:hover {
+            border: none;
+        }
+
+        .text-align {
+            margin-top: -3%;
+            margin-bottom: -9%;
+
+            padding: 10%;
+        }
+
+
+
+        .register-heading {
+            color: Red;
+        }
+
+        .register-heading h1 {
+            margin-left: 21%;
+            margin-bottom: 10%;
+            color: #e9ecef;
+        }
+
+        .register {
+            background: -webkit-linear-gradient(left, #c6c573, #dbb0c2);
+            margin-top: 3%;
+            padding: 3%;
+            border-radius: 2.5rem;
+        }
+
+        .btnSubmit {
+            width: 50%;
+            border-radius: 1rem;
+            padding: 1.5%;
+            color: #fff;
+            background-color: #03612e;
+            border: none;
+            cursor: pointer;
+            margin-right: 6%;
+            color: rgb(246, 246, 252);
+            margin-top: 4%;
+        }
+
+        label {
+            font-weight: bold;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container register">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="tab-pane fade show active text-align form-new" id="home" role="tabpanel"
+                    aria-labelledby="home-tab">
+                    <h3 class="register-heading">Contact Form</h3>
+                    <div class="row register-form">
+                        <div class="col-md-12">
+                            <form method="post" autocomplete="off" name="google-sheet">
+                                <div class="form-group">
+                                    <input type="text" name="Name" class="form-control" placeholder="Your Name *"
+                                        value="" required="" />
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="Email" class="form-control" placeholder="Your Email *"
+                                        value="" required="" />
+                                </div>
+                                <div class="form-group">
+                                    <input type="tel" name="Contact" class="form-control"
+                                        placeholder="Your Contact Number*" value="" required="" />
+                                </div>
+                                <div class="form-group">
+                                    <input type="tel" name="Whatsapp" class="form-control"
+                                        placeholder="Your Whatsapp Number*" value="" required="" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="dropdown" class="required">Course:</label>
+                                    <select id="dropdown" name="Course" required>
+                                        <option value="">Select an option</option>
+                                        <option value="Data Science">Data Science</option>
+                                        <option value="Data Structure and Algorithms">Data Structure and Algorithms
+                                        </option>
+                                        <option value="Data Science">Data Science</option>
+                                        <option value="Business Analytics">Business Analytics</option>
+                                        <option value="Artificial Intelligence">Artificial Intelligence</option>
+                                        <option value="Finance">Finance</option>
+                                        <option value="Digital Marketing">Digital Marketing</option>
+                                        <option value="Human Resources">Human Resources</option>
+                                        <option value="Ui/Ux">Ui/Ux</option>
+                                        <option value="BDE">BDE</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="college" class="required">College:</label><br>
+                                    <input type="text" id="College" name="College" placeholder="College Name*" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="fee" class="required">Fee Paid:</label>
+                                    <select id="fee_dropdown" name="Fee" required>
+                                        <option value="">Select an option</option>
+                                        <option value="Enrollment Fee">Enrollment Fee</option>
+                                        <option value="Full Fee Paid">Full Fee Paid</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <input type="submit" name="submit" class="btnSubmit btn-block" value="Submit" />
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbwCs86Xc0zbSpWg8ueDHPjm3p1bJJxQ7eWlkftuji9Tiag6Ts8G7WraLytOg9GjC_kK/exec'
+        const form = document.forms['google-sheet']
+
+        form.addEventListener('submit', e => {
+            e.preventDefault()
+            fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+                .then(response => alert("Thanks for Contacting us..! We Will Contact You Soon..."))
+                .catch(error => console.error('Error!', error.message))
+        })
+    </script>
+
+</body>
+
+</html>
